@@ -28681,3 +28681,15 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
 }
 
 /*# sourceMappingURL=volt.css.map */
+
+/* Hazem */
+
+.element-inside-td{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn-in-td{
+    line-height: 1.3 !important;
+}
