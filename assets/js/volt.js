@@ -380,8 +380,8 @@ if(document.getElementById('delete-book-request') != null){
     });
 }
 
-if(document.getElementById('delete') != null){
-    document.getElementById('delete').addEventListener('click', function () {
+if(document.getElementById('delete-college') != null){
+    document.getElementById('delete-college').addEventListener('click', function () {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

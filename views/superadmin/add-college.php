@@ -4,7 +4,7 @@
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
-<title>Volt - Free Bootstrap 5 Dashboard || Add-college</title>
+<title>Learnigo || Add College</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
 <meta name="author" content="Themesberg">
@@ -84,7 +84,7 @@
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="college_name">College Name</label>
-                            <input class="form-control" id="college_name" type="text" placeholder="Enter college name" required>
+                            <input class="form-control" id="college_name" name="collegename" type="text" placeholder="Enter college name" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -94,31 +94,17 @@
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                 </span>
-                                <input data-datepicker="" class="form-control" id="DoE" type="text" placeholder="dd/mm/yyyy" required>                                               
+                                <input data-datepicker="" class="form-control" id="DoE" name="doe" type="text" placeholder="dd/mm/yyyy" required>                                               
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input class="form-control" id="email" type="email" placeholder="name@company.com" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input class="form-control" id="phone" type="number" placeholder="+12-345 678 910" required>
                         </div>
                     </div>
                 </div>
                 <h2 class="h5 my-4">Location</h2>
                 <div class="row">
-                    <div class="col-sm-12 mb-3">
+                    <div class="col-sm-8 mb-3">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input class="form-control" id="address" type="text" placeholder="Enter your home address" required>
+                            <input class="form-control" id="address" type="text" name="address" placeholder="Enter your home address" required>
                         </div>
                     </div>
                 </div>

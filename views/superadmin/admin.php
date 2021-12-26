@@ -4,7 +4,7 @@
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
-<title>Volt - Free Bootstrap 5 Dashboard || Admin</title>
+<title>Learnigo || Admins</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
 <meta name="author" content="Themesberg">
@@ -96,14 +96,7 @@
         <div class="table-settings mb-4">
             <div class="row align-items-center justify-content-between">
                 <div class="col col-md-6 col-lg-3 col-xl-4">
-                    <div class="input-group me-2 me-lg-3 fmxw-400">
-                        <span class="input-group-text">
-                            <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Search orders">
-                    </div>
+                    
                 </div>
                 <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
                     <div class="dropdown">
@@ -128,43 +121,28 @@
                         <th class="border-gray-200">#</th>
                         <th class="border-gray-200">Name</th>						
                         <th class="border-gray-200">College name</th>
+                        <th class="border-gray-200">DoB</th>
                         <th class="border-gray-200">E-mail</th>
                         <th class="border-gray-200">phone</th>
-                        <th class="border-gray-200">Status</th>
-                        <th class="border-gray-200">Action</th>
+                        <th class="border-gray-200">Address</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Item -->
                     <tr>
                         <td class="position-relative">
-                            <a href="#" class="fw-bold element-inside-td">
+                            <a href="#" class="fw-bold">
                                 456478
                             </a>
                         </td>
                         <td class="position-relative">
-                            <span class="fw-normal element-inside-td">Platinum Subscription Plan</span>
+                            <span class="fw-normal">Platinum Subscription Plan</span>
                         </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-                        <td class="position-relative"><span class="fw-bold element-inside-td">$799,00</span></td>
-                        <td class="position-relative"><span class="fw-bold text-warning element-inside-td">Due</span></td>
-                        <td class="position-relative">
-                            <button class="btn btn btn-danger btn-in-td" type="button" id="delete">Delete</button>
-                            <!-- <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div> -->
-                        </td>
+                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
+                        <td class="position-relative"><span class="fw-normal">1 Jun 2020</span></td>
+                        <td class="position-relative"><span class="fw-bold">$799,00</span></td>
+                        <td class="position-relative"><span class="fw-bold text-warning">Due</span></td>
+                        <td class="position-relative"><span class="fw-bold">$799,00</span></td>
                     </tr>
                     <!-- Item -->
                     <tr>

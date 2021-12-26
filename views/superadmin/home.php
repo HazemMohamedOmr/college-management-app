@@ -4,7 +4,7 @@
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Volt - Free Bootstrap 5 Dashboard || Home</title>
+    <title>Learnigo || Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
     <meta name="author" content="Themesberg">
@@ -71,6 +71,23 @@
         <?php include('header.php') ?>
 
         <?php include('shortcut.php') ?>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow components-section">
+                    <div class="card-body"> 
+                        <div class="row">
+                            <div class="col-md-8 offset-2">
+                                <blockquote class="blockquote text-center">
+                                    Precision, speed, unambiguity, knowledge of files, continuity, discretion, unity, strict subordination, reduction of friction and of material and personal costs - these are raised to the optimum point in the strictly bureaucratic administration.
+                                    <footer class="blockquote-footer mt-3 text-primary">Max Weber</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php include('../footer.php') ?>
 

@@ -4,7 +4,7 @@
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
-<title>Volt - Free Bootstrap 5 Dashboard || blank page</title>
+<title>Learnigo || Add Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
 <meta name="author" content="Themesberg">
@@ -84,13 +84,13 @@
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="first_name">First Name</label>
-                            <input class="form-control" id="first_name" type="text" placeholder="Enter your first name" required>
+                            <input class="form-control" id="first_name" name="fname" type="text" placeholder="Enter first name" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="last_name">Last Name</label>
-                            <input class="form-control" id="last_name" type="text" placeholder="Also your last name" required>
+                            <input class="form-control" id="last_name" name="lname" type="text" placeholder="Also last name" required>
                         </div>
                     </div>
                 </div>
@@ -101,12 +101,12 @@
                             <span class="input-group-text">
                                 <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                             </span>
-                            <input data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" required>                                               
+                            <input data-datepicker="" class="form-control" id="birthday" name="birthday" type="text" placeholder="dd/mm/yyyy" required>                                               
                             </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="gender">Gender</label>
-                        <select class="form-select mb-0" id="gender" aria-label="Gender select example">
+                        <select class="form-select mb-0" id="gender" name="gender" aria-label="Gender select example" required>
                             <option selected>Gender</option>
                             <option value="1">Female</option>
                             <option value="2">Male</option>
@@ -117,13 +117,31 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" id="email" type="email" placeholder="name@company.com" required>
+                            <input class="form-control" id="email" name="email" type="email" placeholder="name@company.com" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input class="form-control" id="phone" type="number" placeholder="+12-345 678 910" required>
+                            <input class="form-control" id="phone" name="phone" type="number" placeholder="+12-345 678 910" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="college">College</label>
+                            <select class="form-select mb-0" id="college" name="college" aria-label="college select example" required>
+                                <option selected>Choose College</option>
+                                <option value="1">FCIH</option>
+                                <option value="2">Arts</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -132,84 +150,7 @@
                     <div class="col-sm-9 mb-3">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input class="form-control" id="address" type="text" placeholder="Enter your home address" required>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 mb-3">
-                        <div class="form-group">
-                            <label for="number">Number</label>
-                            <input class="form-control" id="number" type="number" placeholder="No." required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 mb-3">
-                        <div class="form-group">
-                            <label for="city">City</label>
-                            <input class="form-control" id="city" type="text" placeholder="City" required>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="form-select w-100 mb-0" id="state" name="state" aria-label="State select example">
-                            <option selected>State</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="zip">ZIP</label>
-                            <input class="form-control" id="zip" type="tel" placeholder="ZIP" required>
+                            <input class="form-control" id="address" name="fname" type="text" placeholder="Enter home address" required>
                         </div>
                     </div>
                 </div>

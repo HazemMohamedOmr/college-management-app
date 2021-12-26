@@ -4,7 +4,7 @@
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
-<title>Volt - Free Bootstrap 5 Dashboard || College</title>
+<title>Learnigo || Add College</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
 <meta name="author" content="Themesberg">
@@ -96,14 +96,7 @@
         <div class="table-settings mb-4">
             <div class="row align-items-center justify-content-between">
                 <div class="col col-md-6 col-lg-3 col-xl-4">
-                    <div class="input-group me-2 me-lg-3 fmxw-400">
-                        <span class="input-group-text">
-                            <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Search orders">
-                    </div>
+                    
                 </div>
                 <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
                     <div class="dropdown">
@@ -129,8 +122,6 @@
                         <th class="border-gray-200">Name</th>						
                         <th class="border-gray-200">Establishment date</th>
                         <th class="border-gray-200">address</th>
-                        <th class="border-gray-200">Total</th>
-                        <th class="border-gray-200">Status</th>
                         <th class="border-gray-200">Action</th>
                     </tr>
                 </thead>
@@ -147,10 +138,8 @@
                         </td>
                         <td class="position-relative"><span class="fw-normal element-inside-td">1 May 2020</span></td>                        
                         <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-                        <td class="position-relative"><span class="fw-bold element-inside-td">$799,00</span></td>
-                        <td class="position-relative"><span class="fw-bold text-warning element-inside-td">Due</span></td>
                         <td class="position-relative">
-                            <button class="btn btn btn-danger btn-in-td" type="button" id="delete">Delete</button>
+                            <button class="btn btn btn-danger btn-in-td" type="button" id="delete-college">Delete</button>
                             <!-- <div class="btn-group">
                                 <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="icon icon-sm">
@@ -178,8 +167,6 @@
                         </td>
                         <td><span class="fw-normal">1 Apr 2020</span></td>                        
                         <td><span class="fw-normal">1 May 2020</span></td>
-                        <td><span class="fw-bold">$799,00</span></td>
-                        <td><span class="fw-bold text-success">Paid</span></td>
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -207,8 +194,6 @@
                             <span class="fw-normal">Platinum Subscription Plan</span>
                         </td>
                         <td><span class="fw-normal">1 Nov 2019</span></td>                        
-                        <td><span class="fw-normal">1 Dec 2019</span></td>
-                        <td><span class="fw-bold">$799,00</span></td>
                         <td><span class="fw-bold text-success">Paid</span></td>
                         <td>
                             <div class="btn-group">
@@ -237,9 +222,7 @@
                             <span class="fw-normal">Gold Subscription Plan</span>
                         </td>
                         <td><span class="fw-normal">1 Oct 2019</span></td>                        
-                        <td><span class="fw-normal">1 Nov 2019</span></td>
                         <td><span class="fw-bold">$533,42</span></td>
-                        <td><span class="fw-bold text-danger">Cancelled</span></td>
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -332,16 +315,6 @@
 
     <!-- Volt JS -->
     <script src="../../assets/js/volt.js"></script>
-
-    <script>
-        document.getElementById('questionAlert').addEventListener('click', function () {
-            swalWithBootstrapButtons.fire(
-                'The Internet?',
-                'That thing is still around?',
-                'question'
-            );
-        });
-    </script>
 
         
 </body>
