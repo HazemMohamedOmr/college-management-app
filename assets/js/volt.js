@@ -420,3 +420,69 @@ if(document.getElementById('update-student-fee') != null){
           })
     })
 }
+
+if(document.getElementById('acceptBookRequest') != null){
+    document.getElementById('acceptBookRequest').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, accept it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+                'Accepted!',
+                'Book request has been accepted.',
+                'success'
+            )
+            }
+        })
+    });
+}
+
+if(document.getElementById('rejectBookRequest') != null){
+    document.getElementById('rejectBookRequest').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reject it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+                'Rejected!',
+                'Book request has been rejected.',
+                'success'
+            )
+            }
+        })
+    });
+}
+
+if(document.getElementById('return-issued-book') != null){
+    document.getElementById('return-issued-book').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, return it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+                'Returned!',
+                'Book has been returned.',
+                'success'
+            )
+            }
+        })
+    });
+}
