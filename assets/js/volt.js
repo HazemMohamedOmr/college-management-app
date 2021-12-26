@@ -356,23 +356,67 @@ d.addEventListener("DOMContentLoaded", function(event) {
 
 });
 
-document.getElementById('delete').addEventListener('click', function () {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Deleted!',
-            'College has been deleted.',
-            'success'
-          )
-        }
-      })
-});
+// super admin delete button js
 
+if(document.getElementById('delete-book-request') != null){
+    document.getElementById('delete-book-request').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+                'Deleted!',
+                'Book request has been deleted.',
+                'success'
+            )
+            }
+        })
+    });
+}
+
+if(document.getElementById('delete') != null){
+    document.getElementById('delete').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+                'Deleted!',
+                'College has been deleted.',
+                'success'
+            )
+            }
+        })
+    });
+}
+
+if(document.getElementById('update-student-fee') != null){
+    document.getElementById('update-student-fee').addEventListener('click', function (){
+        Swal.fire({
+            title: 'Update student fees',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Paid',
+            denyButtonText: `Not Paid`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire('Student paid fees Saved!', '', 'success')
+            } else if (result.isDenied) {
+              Swal.fire('Student not paid fees Saved!', '', 'success')
+            }
+          })
+    })
+}
