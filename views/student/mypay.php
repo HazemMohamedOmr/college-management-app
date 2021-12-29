@@ -1,6 +1,22 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'student'){
+        header("Location: ../404.php");
+    }
+?>
+
+
+<?php
+    require('../../models/student_db.php');
+    $student = new student();
+    $pays = $student->viewPays();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
@@ -78,39 +94,20 @@
             <table class="table table-hover">
                 <thead>
                     <tr>					
-                        <th class="border-gray-200">Pay date</th>
-                        <th class="border-gray-200">Total</th>
+                        <th class="border-gray-200">Pay Year</th>
                         <th class="border-gray-200">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Item -->
+                    <?php foreach($pays as $pay) { ?>
                     <tr>
-                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-bold">$799,00</span></td>
-                        <td class="position-relative"><span class="fw-bold text-warning ">Due</span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $pay['Fee-Year'] ?></span></td>                        
+                        <td class = "position-relative"><span class="fw-bold <?php if ($pay['status'] == '1') {echo 'text-success';} elseif ($pay['status']=='0') { echo 'text-warning';} ?>"> <?php if($pay['status']=='1'){echo 'Paid' ;} else{echo 'Unpaid';}?>  </span></td>
                        
                     </tr>
                     <!-- Item -->
-                    <tr>
-                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-bold ">$799,00</span></td>
-                        <td><span class="fw-bold text-success">Paid</span></td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        
-                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-bold">$799,00</span></td>
-                        <td class="position-relative"><span class="fw-bold text-warning">Due</span></td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        
-                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-bold">$799,00</span></td>
-                        <td><span class="fw-bold text-success">Paid</span></td>
-                    </tr>                              
+                    <?php }?>
                 </tbody>
             </table>
            

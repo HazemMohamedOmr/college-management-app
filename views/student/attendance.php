@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'student'){
+        header("Location: ../404.php");
+    }
+?>
+
+<?php
+    require('../../models/student_db.php');
+    $student = new student();
+    $attends = $student->viewAttendance();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,49 +113,27 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="border-gray-200">Teacher</th>						
-                        <th class="border-gray-200">date</th>
-                        <th class="border-gray-200">Status</th>
+                        <th class="border-gray-200">excuse</th>						
+                        <th class="border-gray-200">status</th>
+                        <th class="border-gray-200">day</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Item -->
+                    <?php foreach($attends as $attend){ ?>
                     <tr>
                         <td class="position-relative">
+                        <span class="fw-bold"><?php echo $attend['Excuse'] ?></span>
                         </td>
                         
-                        <td class="position-relative"><span class="fw-normal element-inside-td">4 May 2020</span></td>                        
-                        <td><span class="fw-bold text-success">Attend</span></td>
+                        <td class="position-relative"><span class="fw-normal element-inside-td"><?php echo $attend['day'] ?></span></td>                        
+                        <td><span class="fw-bold <?php if ($attend['status'] == '1') {echo 'text-success';} elseif ($attend['status']=='0') { echo 'text-warning';} ?>"> <?php if($attend['status']=='1'){echo 'Attend' ;} else{echo 'Absent';}?>  </span></td>
 
                     </tr>
+                    <?php }?>
                     <!-- Item -->
-                    <tr>
-                        <td>
-                            
-                        </td>
-                        <td><span class="fw-normal">2 Apr 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-bold text-warning element-inside-td">absent</span></td>
-
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            
-                        </td>
-                        <td><span class="fw-normal">6 Nov 2019</span></td>                        
-                        <td class="position-relative"><span class="fw-bold text-warning element-inside-td">absent</span></td>
-
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            
-                        </td>
-                        
-                        <td><span class="fw-normal">7 Oct 2019</span></td>                        
-                        <td><span class="fw-bold text-success">Attend</span></td>
-
-                    </tr>                              
+                  
+                                            
                 </tbody>
             </table>
             <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">

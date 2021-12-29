@@ -1,3 +1,10 @@
+<?php  
+    require('../../models/admin_db.php');
+
+    $admin = new Admin();
+    $books = $admin->viewBook();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,7 +98,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="border-gray-200">#</th>
                         <th class="border-gray-200">Title</th>						
                         <th class="border-gray-200">Publish Date</th>
                         <th class="border-gray-200">author</th>
@@ -101,68 +107,21 @@
                 </thead>
                 <tbody>
                     <!-- Item -->
+                    <?php foreach($books as $book){?>
                     <tr>
                         <td class="position-relative">
-                            <a href="#" class="fw-bold element-inside-td">
-                                456478
-                            </a>
+                            <span class="fw-bolder"><?php echo $book['Title'] ?></span>
                         </td>
-                        <td class="position-relative">
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-normal">1 Jun 2020</span></td>
-                        <td class="position-relative"><span class="fw-bold">$799,00</span></td>
-                        <td class="position-relative"><span class="fw-bold text-warning">Due</span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $book['publishDate'] ?></span></td>                        
+                        <td class="position-relative"><span class="fw-normal"><?php echo $book['author'] ?></span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $book['category'] ?></span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $book['quantity'] ?></span></td>
                     </tr>
                     <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                456423
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Apr 2020</span></td>                        
-                        <td><span class="fw-normal">1 May 2020</span></td>
-                        <td><span class="fw-bold">$799,00</span></td>
-                        <td><span class="fw-bold text-success">Paid</span></td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                456478
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Nov 2019</span></td>                        
-                        <td><span class="fw-normal">1 Dec 2019</span></td>
-                        <td><span class="fw-bold">$799,00</span></td>
-                        <td><span class="fw-bold text-success">Paid</span></td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                453673
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Gold Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Oct 2019</span></td>                        
-                        <td><span class="fw-normal">1 Nov 2019</span></td>
-                        <td><span class="fw-bold">$533,42</span></td>
-                        <td><span class="fw-bold text-danger">Cancelled</span></td>
-                    </tr>                              
+                    <?php } ?>                             
                 </tbody>
             </table>
-            <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
+            <!-- <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination mb-0">
                         <li class="page-item">
@@ -189,7 +148,7 @@
                     </ul>
                 </nav>
                 <div class="fw-normal small mt-4 mt-lg-0">Showing <b>5</b> out of <b>25</b> entries</div>
-            </div>
+            </div> -->
         </div>
 
         <?php include('../footer.php') ?>

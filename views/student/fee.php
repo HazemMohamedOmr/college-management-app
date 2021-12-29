@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'student'){
+        header("Location: ../404.php");
+    }
+?>
+
+<?php
+    require('../../models/student_db.php');
+    $student = new student();
+    $fees = $student->viewFees();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,35 +104,16 @@
                 </thead>
                 <tbody>
                     <!-- Item -->
+                    <?php foreach($fees as $fee){ ?>
                     <tr>
                         <td class="position-relative">
-                            456478
+                            <span class="fw-normal"><?php echo $fee['Amount'] ?></span>
                         </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">2 May 2020</span></td>                        
+                        <td class="position-relative"><span class="fw-normal"><?php echo $fee['Year'] ?></span></td>                        
                         
                     </tr>
                     <!-- Item -->
-                    <tr>
-                        <td class="position-relative">
-                            456478
-                        </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">6 May 2020</span></td>                        
-                        
-                    </tr>
-                    <tr>
-                        <td class="position-relative">
-                            456478
-                        </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">2 May 2021</span></td>                        
-                        
-                    </tr>
-                    <tr>
-                        <td class="position-relative">
-                            456478
-                        </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">6 May 2021</span></td>                        
-                        
-                    </tr>
+                    <?php }?>
                                                 
                 </tbody>
             </table>

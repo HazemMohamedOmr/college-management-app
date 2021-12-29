@@ -1,3 +1,20 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'student'){
+        header("Location: ../404.php");
+    }
+?>
+
+
+<?php
+require('../../models/student_db.php');
+$student = new student();
+$Books = $student->viewBooks();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,16 +106,18 @@
 
         <div class="card card-body border-0 shadow mb-4">
             <h2 class="h5 mb-4">General information</h2>
-            <form action="#" method="">
+            <form action="../../controllers/bookReq_cn.php" method="POST">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="Book-title">Book Title</label>
-                            <select class="form-select mb-0" id="Book-title" name="bTitle" aria-label="college select example" required>
+                            <select class="form-select mb-0" id="Book-title" name="bTitle" aria-label="college select example" >
                                 <option selected>Choose Book</option>
-                                <option value="1">Book1</option>
-                                <option value="2">Book2</option>
+                                <?php foreach($Books as $Book) {?>
+                                <option value="<?php echo $Book['Title'] ?>"><?php echo $Book['Title'] ?></option>
+                                <?php }?> 
                             </select>
+                           
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -108,7 +127,7 @@
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                 </span>
-                                <input type="text" class="form-control" id="requestInfo" name="requestinfo" placeholder="Enter Request Info" required>                                         
+                                <input type="text" class="form-control" id="requestInfo" name="requestinfo" placeholder="Enter Request Info" >                                         
                             </div>
                         </div>
                     </div>
@@ -117,12 +136,12 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label>Duration</label>
-                            <input class="form-control" id="duration" type="number" name="duration" placeholder="Enter days of issuing" required>
+                            <input class="form-control" id="duration" type="number" name="duration" placeholder="Enter days of issuing" >
                         </div>
                     </div>
                 </div>
                 <div class="mt-3">
-                    <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Submit</button>
+                    <button class="btn btn-gray-800 mt-2 animate-up-2" name='submit' type="submit">Submit</button>
                 </div>
             </form>
         </div>

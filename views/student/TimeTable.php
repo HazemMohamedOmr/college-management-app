@@ -1,3 +1,19 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'student'){
+        header("Location: ../404.php");
+    }
+?>
+
+<?php
+    require('../../models/student_db.php');
+    $student = new student();
+    $TimeTables = $student->viewTimeTable();
+?>
+    
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,24 +115,28 @@
             <table class="table table-hover">
                 <thead>
                     <tr>           
-                        <th class="border-gray-200">Name</th>           				
-                        <th class="border-gray-200">Description</th>
+                        <th class="border-gray-200">Information</th>           				
+                        <th class="border-gray-200">Download</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Item -->
+                    <?php foreach($TimeTables as $TimeTable){?>
                     <tr>
-                        <td class="position-relative"><span class="fw-normal">Year 1 sem1</span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $TimeTable['description'] ?></span></td>
                         
                         <td class="position-relative">
-                            <button id="download" type="button" class="btn btn-primary d-inline-flex align-items-center">
+                            
+                            <a id="download" type="button" class="btn btn-primary d-inline-flex align-items-center" href="download.php?path=D:\XAMPP\htdocs\word.txt" >
                                 Download
                                 <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
-                            </button>
+                            </a>
+                            
                         </td>
                     </tr>
+                    <?php }?>
                     <!-- Item -->
-                    <tr>
+                    <!-- <tr>
                         <td>
                             
                         </td>
@@ -127,9 +147,9 @@
                             <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
                         </button>                       
                      </td>
-                    </tr> 
+                    </tr>  -->
                     <!-- Item -->
-                    <tr>
+                    <!-- <tr>
                         <td>
                             
                         </td>
@@ -140,9 +160,9 @@
                             <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
                         </button>                        
                         </td>
-                    </tr> 
+                    </tr>  -->
                     <!-- Item -->
-                    <tr>
+                    <!-- <tr>
                         <td>
                             
                         </td>
@@ -153,7 +173,7 @@
                                 <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
                             </button>                        
                         </td>
-                    </tr>                              
+                    </tr>                               -->
                 </tbody>
             </table>
             
