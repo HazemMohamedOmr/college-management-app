@@ -161,7 +161,7 @@
                         <td class="position-relative"><span class="fw-normal"><?php echo $issuedbook['End-Date'] ?></span></td>
                         <td class="position-relative"><span class="fw-normal"><?php echo $issuedbook['period'] ?></span></td>  
                         <td class="position-relative">
-                            <button class="btn btn btn-warning btn-in-td" type="submit" name='submit' id="return-issued-book">Return Book</button> 
+                            <button class="btn btn btn-warning btn-in-td" type="submit" name='submit'>Return Book</button> 
                         </td>
                     </tr>
                     </form>
