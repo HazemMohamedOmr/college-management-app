@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'superadmin'){
+        header("Location: ../404.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,12 +88,12 @@
 
         <div class="card card-body border-0 shadow mb-4">
             <h2 class="h5 mb-4">General information</h2>
-            <form action="#" method="">
+            <form action="../../controllers/college_cn.php" method="POST" >
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="college_name">College Name</label>
-                            <input class="form-control" id="college_name" name="collegename" type="text" placeholder="Enter college name" required>
+                            <input class="form-control" id="collegename" name="collegename" type="text" placeholder="Enter college name" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -94,7 +103,7 @@
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                 </span>
-                                <input data-datepicker="" class="form-control" id="DoE" name="doe" type="text" placeholder="dd/mm/yyyy" required>                                               
+                                <input type="date" class="form-control" id="dos" name="dos" placeholder="dd/mm/yyyy" required>                                               
                             </div>
                         </div>
                     </div>
@@ -109,7 +118,7 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Submit</button>
+                    <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit" name="submit">Submit</button>
                 </div>
             </form>
         </div>
