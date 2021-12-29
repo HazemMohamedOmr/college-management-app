@@ -1,3 +1,19 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'librarian'){
+        header("Location: ../404.php");
+    }
+?>
+
+<?php
+    require('../../models/librarian_db.php');
+    $librarian = new librarian();
+    $requests = $librarian->viewAcceptedRequests();
+    $books = $librarian->viewBook();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,15 +95,16 @@
 
         <div class="card card-body border-0 shadow mb-4">
             <h2 class="h5 mb-4">General information</h2>
-            <form action="#" method="">
+            <form action="../../controllers/issueBook_cn.php" method="POST">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="Book_title">Book Title</label>
                             <select class="form-select mb-0" name="bTitle" id="Book_Title" aria-label="Book_Title">
                                 <option selected>Choose Book Title</option>
-                                <option value="1">Math</option>
-                                <option value="2">Science</option>
+                                <?php foreach($books as $book){ ?>
+                                    <option value="<?php echo $book['Title'] ?>"><?php echo $book['Title'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -101,7 +118,7 @@
                             <span class="input-group-text">
                                 <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                             </span>
-                            <input data-datepicker="" class="form-control" id="Start-Date" type="text" placeholder="dd/mm/yyyy" required>                                               
+                            <input data-datepicker="" class="form-control" name="Start-Date" id="Start-Date" type="text" placeholder="dd/mm/yyyy" required>                                               
                         </div>
                     </div>
                        
@@ -111,7 +128,7 @@
                             <span class="input-group-text">
                                 <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                             </span>
-                            <input data-datepicker="" class="form-control" id="End-Date" type="text" placeholder="dd/mm/yyyy" required>                                               
+                            <input data-datepicker="" class="form-control" name="End-Date" id="End-Date" type="text" placeholder="dd/mm/yyyy" required>                                               
                             </div>
                     </div>
             
@@ -119,7 +136,7 @@
               
                     <div class="row">
                         <div class="mt-3">
-                            <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Submit</button>
+                            <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit" name= "submit" value="submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -148,110 +165,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Item -->
+                <?php foreach($requests as $request){?>
+                    <form action="../../models/librarian_db.php" method="POST">
                     <tr>
                         <td class="position-relative">
-                            <a href="#" class="fw-bold ">
-                                456478
-                            </a>
+                        <input class="fw-normal" type='hidden' name='id' value='<?php echo $request['S-id'] ?>' id='id' ><?php echo $request['S-id'] ?>
                         </td>
                         <td class="position-relative">
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td class="position-relative"><span class="fw-normal">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-normal ">1 Jun 2020</span></td>
-                
-                    </tr>
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                456423
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Apr 2020</span></td>                        
-                        <td><span class="fw-normal">1 May 2020</span></td>
-                      
-                  
-                 
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                456478
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Nov 2019</span></td>                        
-                        <td><span class="fw-normal">1 Dec 2019</span></td>
-        
-                        
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                453673
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Gold Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Oct 2019</span></td>                        
-                        <td><span class="fw-normal">1 Nov 2019</span></td>
-                  
-         
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div>
-                        </td>
+                        <input  class="fw-normal" type="hidden" name='title' value="<?php echo $request['B-titel'] ?>"><?php echo $request['B-titel'] ?></span>
+                        </td>   
+                        <td class="position-relative"> <input class="fw-normal" type='hidden' name='ids' id='ids'><?php echo $request['Request-info'] ?></td>                        
+                        <td class="position-relative"><span class="fw-normal"><?php echo $request['duration'] ?></span></td>
+               
+                        <?php }?>
                     </tr>                              
                 </tbody>
             </table>

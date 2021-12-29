@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'librarian'){
+        header("Location: ../404.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,18 +88,19 @@
 
         <div class="card card-body border-0 shadow mb-4">
             <h2 class="h5 mb-4">General information</h2>
-            <form action="#" method="">
+            <form action="../../controllers/book_cn.php" method="POST">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="Book_title">Book Title</label>
-                            <input class="form-control" id="Book_Title" name="bookname" type="text" placeholder="Enter Book Title" required>
+                            <input class="form-control" id="Book_Title" name="bookname" type="text" placeholder="Enter Book Title">
+                        
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="Author">Author</label>
-                            <input class="form-control" id="Author" name="author" type="text" placeholder="Enter the author" required>
+                            <input class="form-control" id="Author" name="author" type="text" placeholder="Enter the author">
                         </div>
                     </div>
                 </div>
@@ -101,7 +111,7 @@
                             <span class="input-group-text">
                                 <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                             </span>
-                            <input data-datepicker="" class="form-control" name="publishdate" id="Publish_Date" type="text" placeholder="dd/mm/yyyy" required>                                               
+                            <input class="form-control" name="publishdate" id="Publish_Date" type="date" placeholder="dd/mm/yyyy" >                                               
                             </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -110,6 +120,8 @@
                             <option selected>category</option>
                             <option value="1">Math</option>
                             <option value="2">Science</option>
+                            <option value="2">Art</option>
+                            <option value="2">Languages</option>
                         </select>
                     </div>
                 </div>
@@ -117,11 +129,11 @@
                 <div class="col-md-6 mb-3">
                         <div>
                             <label for="Book_Quantity">Book Quantity</label>
-                            <input class="form-control" id="Book_Quantity" name="quantity" type="number" placeholder="Enter Book Quantity" required>
+                            <input class="form-control" id="Book_Quantity" name="quantity" type="number" placeholder="Enter Book Quantity" >
                         </div>
                     </div>
                     <div class="mt-3">
-                    <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Submit</button>
+                    <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit" name= "submit" value="submit">Submit</button>
                 </div>
                     </div>
                     </div>
@@ -133,6 +145,7 @@
         </div>
 
         <?php include('../footer.php') ?>
+
 
     </main>
 

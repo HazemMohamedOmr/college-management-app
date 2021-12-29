@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'librarian'){
+        header("Location: ../404.php");
+    }
+?>
+
+<?php
+    require('../../models/librarian_db.php');
+    $librarian = new librarian();
+    $requests = $librarian->viewBookRequest();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,24 +142,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Item -->
+                 
+
+                <?php foreach($requests as $request){?>
+                    <form action="../../models/librarian_db.php" method="POST">
                     <tr>
                         <td class="position-relative">
-                            <a href="#" class="fw-bold element-inside-td">
-                                456478
-                            </a>
+                        <input class="fw-normal" type='hidden' name='id' value='<?php echo $request['S-id'] ?>' id='id' ><?php echo $request['S-id'] ?>
                         </td>
                         <td class="position-relative">
-                            <span class="fw-normal element-inside-td">Platinum Subscription Plan</span>
-                        </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">pending</span></td>
-                        <td class="position-relative">
-                            <button class="btn btn btn-success btn-in-td" type="button" id="acceptBookRequest">Accept</button> 
-                            <button class="btn btn btn-danger btn-in-td" type="button" id="rejectBookRequest">Reject</button>
-                        </td>
+                        <input  class="fw-normal" type="hidden" name='title' value="<?php echo $request['B-titel'] ?>"><?php echo $request['B-titel'] ?></span>
+                        </td>   
+                        <td class="position-relative"> <input class="fw-normal" type='hidden' name='ids' id='ids'><?php echo $request['Request-info'] ?></td>                        
+                        <td class="position-relative"><span class="fw-normal"><?php echo $request['duration'] ?></span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $request['Status'] ?></span></td>  
+                        <td class="position-relative"> 
+                             <button class="btn btn btn-success btn-in-td" type="submit" name='accept' value='submit' id="acceptBookRequest">Accept</button> 
+            
+
+                        <button class="btn btn btn-danger btn-in-td" type="submit"  name="submit" value="submit" id="rejectBookRequest">Reject</button>  
+                        </td>   
                     </tr>
+                    </form>
+
+
+                    <?php }?>
                               
                 </tbody>
             </table>

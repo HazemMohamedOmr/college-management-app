@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'librarian'){
+        header("Location: ../404.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

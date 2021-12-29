@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("Location: ../sign-in.php");
+    }elseif($_SESSION['role'] != 'librarian'){
+        header("Location: ../404.php");
+    }
+?>
+
+<?php
+    require('../../models/BookTicket_db.php');
+    $librarian = new BookTicket();
+    $issuedbooks = $librarian->viewissuedBooks();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,123 +145,29 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                <form action="../../models/returnBook_db.php" method="POST">
                     <!-- Item -->
+                    <?php foreach($issuedbooks as $issuedbook){?>
                     <tr>
                         <td class="position-relative">
-                            <a href="#" class="fw-bold element-inside-td">
-                                456478
-                            </a>
+                        <input class="fw-normal" type='hidden' name='id' value="<?php echo $issuedbook['B-title'] ?>"><?php echo $issuedbook['B-title'] ?>
                         </td>
                         <td class="position-relative">
-                            <span class="fw-normal element-inside-td">Platinum Subscription Plan</span>
-                        </td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 May 2020</span></td>                        
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
+                   
+                            <input  class="fw-normal" type='hidden' name='lid' id='lid' value=" <?php echo $issuedbook['L-id'] ?>"><?php echo $issuedbook['L-id'] ?>
+                        </td>   
+                        <td class="position-relative"><span class="fw-normal"><?php echo $issuedbook['Start_date'] ?></span></td>                        
+                        <td class="position-relative"><span class="fw-normal"><?php echo $issuedbook['End-Date'] ?></span></td>
+                        <td class="position-relative"><span class="fw-normal"><?php echo $issuedbook['period'] ?></span></td>  
                         <td class="position-relative">
-                            <button class="btn btn btn-warning btn-in-td" type="button" id="return-issued-book">Return Book</button> 
+                            <button class="btn btn btn-warning btn-in-td" type="submit" name='submit' id="return-issued-book">Return Book</button> 
                         </td>
                     </tr>
+                    </form>
                     <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                456423
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Apr 2020</span></td>                        
-                        <td><span class="fw-normal">1 May 2020</span></td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-                        <td class="position-relative">
-                            <button class="btn btn btn-danger btn-in-td" type="button" id="return">Return Book</button> 
-            
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                456478
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Platinum Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Nov 2019</span></td>                        
-                        <td><span class="fw-normal">1 Dec 2019</span></td>
-                        
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-                        <td class="position-relative">
-                            <button class="btn btn btn-danger btn-in-td" type="button" id="return">Return Book</button> 
-                    
-                        
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> 
-                    <!-- Item -->
-                    <tr>
-                        <td>
-                            <a href="#" class="fw-bold">
-                                453673
-                            </a>
-                        </td>
-                        <td>
-                            <span class="fw-normal">Gold Subscription Plan</span>
-                        </td>
-                        <td><span class="fw-normal">1 Oct 2019</span></td>                        
-                        <td><span class="fw-normal">1 Nov 2019</span></td>
-                        <td class="position-relative"><span class="fw-normal element-inside-td">1 Jun 2020</span></td>
-
-                  
-                        <td class="position-relative">
-                            <button class="btn btn btn-danger btn-in-td" type="button" class="return">Return Book</button> 
-                     
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon icon-sm">
-                                        <span class="fas fa-ellipsis-h icon-dark"></span>
-                                    </span>
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu py-0">
-                                    <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                                    <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                                    <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>                              
+                    <?php }?>
+                                                   
                 </tbody>
             </table>
             <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
