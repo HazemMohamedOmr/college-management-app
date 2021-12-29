@@ -100,14 +100,14 @@
                                     <div>
                                         <label for="first_name">First Name</label>
                                         <input class="form-control" id="first_name" type="text"
-                                            placeholder="Enter your first name" required>
+                                            placeholder="Enter your first name" value="<?php echo $_SESSION["fname"]?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div>
                                         <label for="last_name">Last Name</label>
                                         <input class="form-control" id="last_name" type="text"
-                                            placeholder="Also your last name" required>
+                                            placeholder="Also your last name" value="<?php echo $_SESSION["lname"]?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -124,12 +124,12 @@
                                             </svg>
                                         </span>
                                         <input data-datepicker="" class="form-control" id="birthday" type="text"
-                                            placeholder="dd/mm/yyyy" required>
+                                            placeholder="dd/mm/yyyy" value="<?php echo $_SESSION["dob"]?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="gender">Gender</label>
-                                    <select class="form-select mb-0" id="gender" aria-label="Gender select example">
+                                    <select class="form-select mb-0" id="gender" value="<?php echo $_SESSION["gender"]?>" aria-label="Gender select example">
                                         <option selected>Gender</option>
                                         <option value="1">Female</option>
                                         <option value="2">Male</option>
@@ -141,51 +141,41 @@
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input class="form-control" id="email" type="email"
-                                            placeholder="name@company.com" required>
+                                            placeholder="name@company.com" value="<?php echo $_SESSION["email"]?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
                                         <label for="level">Level</label>
-                                        <input class="form-control" id="level" type="number"
+                                        <input class="form-control" id="level" value="<?php echo $_SESSION["level"]?>" type="number"
                                             placeholder="Your Level" required>
                                     </div>
                                 </div>
                                 
                             </div>
                             <div class="row">
-                            
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                        <label for="age">Age</label>
-                                        <input class="form-control" id="age" type="number"
-                                            placeholder="Your age" required>
+                                        <label for="college name">College name</label>
+                                        <input class="form-control" id="name" type="text"
+                                            placeholder="College name" value="<?php echo $_SESSION["college"]?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
                                         <label for="pass">Password</label>
                                         <input class="form-control" id="pass" type="password"
-                                            placeholder="Password here" required>
+                                            placeholder="Password here" value="<?php echo $_SESSION["password"]?>" required>
                                     </div>
                                 </div>
                                 
-                            </div>
-                            <div class="row">
-                            <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label for="college name">College name</label>
-                                        <input class="form-control" id="name" type="text"
-                                            placeholder="College name" required>
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 mb-3">
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input class="form-control" id="address" type="text"
-                                            placeholder="Enter your home address" required>
+                                            placeholder="Enter your home address" value="<?php echo $_SESSION["address"]?>" required>
                                     </div>
                                 </div>
                             </div>
